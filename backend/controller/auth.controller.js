@@ -165,11 +165,11 @@ export const login = async (req, res) => {
     otpStore.setOTP(email, otp);
 
     try {
-       await resend.emails.send({
-        from: 'onboarding@resend.dev', // Use Resend sandbox domain
-        to: email,
-        subject: "Your One-Time Login Code – Abdullah Islamic Store",
-        text: `Assalamu Alaikum,
+    await resend.emails.send({
+  from: 'Website <no-reply@kiswahmakkahstore.com>', // ✅ domain email use karo
+  to: email,
+  subject: "Your One-Time Login Code – Abdullah Islamic Store",
+  text: `Assalamu Alaikum,
 
 Your one-time login code for Abdullah Islamic Store is: ${otp}
 
@@ -179,7 +179,7 @@ If you did not request this code, you can safely ignore this email.
 JazakAllah Khair,
 Abdullah Islamic Store Team
 `,
-        html: `
+  html: `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -247,7 +247,7 @@ Abdullah Islamic Store Team
   </body>
   </html>
   `,
-      });
+});
 
       return res.status(200).json({ message: "OTP sent successfully" });
 
